@@ -1,5 +1,7 @@
 - hosts: webapp
-  user: root
+  user: ubuntu
+  become: yes
+  become_user: root
   gather_facts: yes
 
   roles:
@@ -11,18 +13,10 @@
     - nginx
     - mysql
     - golang
-    - perl
-    - php
     - ruby
-    - python
-    - nodejs
     - webapp.mysql
     - webapp.golang
-    - webapp.perl
-    - webapp.php
     - webapp.ruby
-    - webapp.python
-    - webapp.nodejs
     - webapp.nginx
 
   tasks:

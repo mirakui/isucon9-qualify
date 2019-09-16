@@ -1,8 +1,10 @@
 [webapp]
-
+isu-app-01
 
 [dev]
-
+isu-api-01
 
 [bench]
+isu-bench-01
+
 
