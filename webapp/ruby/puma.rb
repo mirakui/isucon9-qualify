@@ -3,7 +3,7 @@ require 'socket'
 
 environment 'production'
 daemonize false
-pidfile '/run/isucari/puma.pid'
+pidfile '/tmp/puma.pid'
 
 # Use "path" as the file to store the server info state. This is
 # used by "pumactl" to query and control the server.
@@ -19,7 +19,7 @@ stdout_redirect '/tmp/isu-rack.log', '/tmp/isu-rack.log', true
 threads 6,6
 workers 2
 
-bind 'unix:///run/isucari/puma.sock'
+bind 'unix:///tmp/puma.sock'
 
 # before_fork do
 #   puts "Starting workers..."
@@ -56,4 +56,4 @@ tag 'isucari'
 # worker_timeout 60
 # worker_boot_timeout 60
 
-activate_control_app 'unix:///run/isucari/pumactl.sock'
+activate_control_app 'unix:///tmp/pumactl.sock'
