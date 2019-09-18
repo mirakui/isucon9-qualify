@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require_relative './tmux.rb'
 
+session_name = 'deploy'
 windows = [
   [
     './deploy.sh',
@@ -14,4 +15,5 @@ windows = [
   ]
 ]
 
-Tmux.run windows
+tmux = Tmux.new session_name
+tmux.run windows
