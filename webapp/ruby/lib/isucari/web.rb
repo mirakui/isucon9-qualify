@@ -140,6 +140,10 @@ module Isucari
       end
     end
 
+    before do
+      response.headers['X-Isu-Time'] = Time.now.strftime('%H%M%S%N')
+    end
+
     after do
       response.headers['X-Isu-UserId'] = session['user_id'].to_s if session['user_id']
     end
