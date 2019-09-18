@@ -140,6 +140,10 @@ module Isucari
       end
     end
 
+    after do
+      headers 'X-Isu-UserId' => session['user_id']
+    end
+
     # API
 
     # postInitialize
@@ -1161,6 +1165,7 @@ module Isucari
 
       session['user_id'] = user['id']
       session['csrf_token'] = SecureRandom.hex(20)
+      headers user_id: user['id']
 
       user.to_json
     end
