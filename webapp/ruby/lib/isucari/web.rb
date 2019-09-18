@@ -1165,7 +1165,6 @@ module Isucari
 
       session['user_id'] = user['id']
       session['csrf_token'] = SecureRandom.hex(20)
-      headers user_id: user['id']
 
       user.to_json
     end
