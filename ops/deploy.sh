@@ -13,9 +13,10 @@ sudo cp /home/isucon/git/nginx.conf /etc/nginx/nginx.conf
 sudo bash -c '
 echo > /var/log/nginx/access.log;
 echo > /var/log/nginx/error.log;
+echo > /var/lib/mysql/mysql-slow.log;
 '
-echo > /tmp/isu-rack.log;
-echo > /tmp/isu-rack.systemd.log;
+echo > /tmp/isu-rack.log
+echo > /tmp/isu-rack.systemd.log
 
 sudo systemctl restart isucari.ruby.service
 sudo nginx -t

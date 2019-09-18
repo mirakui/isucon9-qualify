@@ -5,13 +5,13 @@ session_name = 'deploy'
 windows = [
   [
     './deploy.sh',
-    ['ssh -t isu-app-01', 'sudo journalctl -b -f -u isucari.ruby.service'],
-    ['ssh -t isu-app-01', 'sudo watch -n 1 systemctl status isucari.ruby.service'],
-    ['ssh -t isu-app-01', 'sudo tail -F /var/log/nginx/error.log'],
-    ['ssh -t isu-app-01', 'tail -F /tmp/isu-rack*.log'],
+    ['ssh isu-app-01', 'sudo journalctl -b -f -u isucari.ruby.service'],
+    ['ssh isu-app-01', 'sudo watch -n 1 systemctl status isucari.ruby.service'],
+    ['ssh isu-app-01', 'sudo tail -F /var/log/nginx/error.log'],
+    ['ssh isu-app-01', 'tail -F /tmp/isu-rack*.log'],
   ],
   [
-    ['ssh -t isu-app-01', 'sudo dstat -ltsamp'],
+    ['ssh isu-app-01', 'sudo dstat -ltsamp'],
   ]
 ]
 
