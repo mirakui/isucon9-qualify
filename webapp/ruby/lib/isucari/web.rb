@@ -141,7 +141,7 @@ module Isucari
     end
 
     after do
-      headers 'X-Isu-UserId' => session['user_id']
+      response.headers['X-Isu-UserId'] = session['user_id'].to_s if session['user_id']
     end
 
     # API
