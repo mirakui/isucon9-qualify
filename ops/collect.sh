@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+uri_pattern="/new_items/.+\.json,/items/.+\.json,/users/.+\.json,/transactions/.+\.png"
+
 now=`date +%H%M`
 tmp_dir=tmp/$now
 
@@ -19,4 +21,13 @@ sed -i .bak -e "1,${first_line_no}d" $tmp_dir/access.log
 
 rm $tmp_dir/access.log.*
 
+cat $tmp_dir/access.log | alp ltsv -r -q --sort=sum -m $uri_pattern > $tmp_dir/alp.txt
+
 scp $host:/var/lib/mysql/mysql-slow.log $tmp_dir/
+
+if [ ! -f tmp/pt-query-digest ]; then
+  curl -o tmp/pt-query-digest https://www.percona.com/get/pt-query-digest
+  chmod 755 tmp/pt-query-digest
+fi
+
+tmp/pt-query-digest $tmp_dir/mysql-slow.log > $tmp_dir/slow.txt
